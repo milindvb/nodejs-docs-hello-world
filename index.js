@@ -19,7 +19,7 @@ var server = http.createServer(function(request, response) {
         //const argv = require('yargs').argv
 
         //var output = "nodejs version = "+ process.version + ", Process Id = " + pid + ", mongourl = "+ argv.mongourl;
-        var output = "nodejs version = "+ process.version + ", Process Id = " + pid;
+        var output = JSON.stringify(request.headers)+ "nodejs version = "+ process.version + ", Process Id = " + pid;
         //fs.createReadStream(path.resolve(__dirname, 'sample23kb.txt')).pipe(response);
         response.write(output);
         //response.end("---dev2---------");
