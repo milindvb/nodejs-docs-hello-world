@@ -1,6 +1,7 @@
 var http = require('http');
 const express = require('express')
 const app = express()
+app.use(express.static('public'))
 
 
 var server = http.createServer(function(request, response) {
