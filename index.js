@@ -1,10 +1,10 @@
 var http = require('http');
 const express = require('express')
 const app = express()
-app.use(express.static('public'))
 
 
 var server = http.createServer(function(request, response) {
+    app.use(express.static('public'))
 
     response.writeHead(200, {"Content-Type": "text/plain"});
         const version = process.version;
