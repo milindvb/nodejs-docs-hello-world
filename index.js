@@ -7,7 +7,8 @@ const app = express()
 var output = "";
 var body="xyz";
 var options = {
-  host: "http://jsonplaceholder.typicode.com/todos/1",
+  host: "jsonplaceholder.typicode.com",
+  path: "/todos/1",
   method: "GET"
 };
 
