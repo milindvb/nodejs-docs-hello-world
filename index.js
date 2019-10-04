@@ -8,8 +8,6 @@ var output = "";
 var body="xyz";
 var options = {
   host: "https://jsonplaceholder.typicode.com/todos/1",
-  port: 80,
-  path: "/",
   method: "GET"
 };
 
