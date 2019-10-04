@@ -4,7 +4,7 @@ const app = express()
 //const appInsights = require("applicationinsights");
 //appInsights.setup("58f83d07-2042-4eef-9fca-461863c9ebe3");
 //appInsights.start();
-var request = require('request');
+
 
 var server = http.createServer(function(request, response) {
     app.use(express.static('public'))
@@ -13,17 +13,17 @@ var server = http.createServer(function(request, response) {
     const version = process.version;
     var pid = process.pid;
     //const argv = require('yargs').argv
+    var request = require('request');
 
     var output = "nodejs version = "+ process.version + ", Process Id = " + pid;
     //var output = "nodejs version = "+ process.version + ", Process Id = " + pid +" ---- " + request.headers['x-ms-client-principal-name'];
     //process.env['USERNAME_AAD'] = request.headers['x-ms-client-principal-name'];
-    request('https://jsonplaceholder.typicode.com/todos/1', { json: true }, (err, res, body) => {
-       if (err) { 
-            return console.log(err); 
-        }
-        console.log(body.id);
-        console.log(body.title);
-        output = output + body.title;
+    
+    request('https://jsonplaceholder.typicode.com/todos/1', function (error, response, body) {
+       console.log('error:', error); // Print the error if one occurred
+       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+       console.log('body:', body); // Print the HTML for the Google homepage.
+       output = output + " ==== " + body;
     });
     response.write(output);
     response.end("------------");
