@@ -1,10 +1,10 @@
 var http = require('http');
 const express = require('express')
 const app = express()
-const appInsights = require("applicationinsights");
-appInsights.setup("58f83d07-2042-4eef-9fca-461863c9ebe3");
-appInsights.start();
-const request = require('request');
+//const appInsights = require("applicationinsights");
+//appInsights.setup("58f83d07-2042-4eef-9fca-461863c9ebe3");
+//appInsights.start();
+var request = require('request');
 
 var server = http.createServer(function(request, response) {
     app.use(express.static('public'))
