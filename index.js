@@ -5,7 +5,7 @@ const app = express()
 //appInsights.setup("58f83d07-2042-4eef-9fca-461863c9ebe3");
 //appInsights.start();
 var output = "";
-
+var body="xyz";
 var server = http.createServer(function(request, response) {
     app.use(express.static('public'))
 
