@@ -6,6 +6,13 @@ const app = express()
 //appInsights.start();
 var output = "";
 var body="xyz";
+var options = {
+  host: "https://jsonplaceholder.typicode.com/todos/1",
+  port: 80,
+  path: "/",
+  method: "GET"
+};
+
 var server = http.createServer(function(request, response) {
     app.use(express.static('public'))
 
@@ -18,15 +25,22 @@ var server = http.createServer(function(request, response) {
     var output = "nodejs version = "+ process.version + ", Process Id = " + pid;
     //var output = "nodejs version = "+ process.version + ", Process Id = " + pid +" ---- " + request.headers['x-ms-client-principal-name'];
     //process.env['USERNAME_AAD'] = request.headers['x-ms-client-principal-name'];
-    
+    var rq = http.request(options, function(rs) {
+        rs.on('data', function (chunk) {
+            output = output + chunk;
+            //response.write(chunk);
+        });
+        rs.on('end', function () {
+            response.end();
+        });
+    });    
     request('https://jsonplaceholder.typicode.com/todos/1', function (error, response, body) {
        console.log('error:', error); // Print the error if one occurred
        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
        console.log('body:', body); // Print the HTML for the Google homepage.
-       output = output + " ==== " + body;
-       response.write(output);
     });
-
+    //output = output + " ==== " + body;
+    response.write(output);
     response.end("- - - - -");
 });
 
