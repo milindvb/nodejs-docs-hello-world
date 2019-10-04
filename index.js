@@ -19,7 +19,7 @@ var server = http.createServer(function(request, response) {
     //var output = "nodejs version = "+ process.version + ", Process Id = " + pid +" ---- " + request.headers['x-ms-client-principal-name'];
     //process.env['USERNAME_AAD'] = request.headers['x-ms-client-principal-name'];
  
-    request('https://jsonplaceholder.typicode.com/todos/1', function (error, resp, body) {
+    request('https://mbcsharpfunc1.azurewebsites.net/api/HttpTrigger1?code=P84a6CUaIFJmLYlezkgxeh4j4/v1acAlclRdA6jCBXw1odw5LlzASg==&name=Azure', function (error, resp, body) {
        console.log('error:', error); // Print the error if one occurred
        console.log('statusCode:', resp && resp.statusCode); // Print the response status code if a response was received
        console.log('body:', body); // Print the output
