@@ -12,7 +12,7 @@ var server = http.createServer(function(request, response) {
     //response.setHeader('Transfer-Encoding', 'chunked');
     //response.useChunkedEncodingByDefault = true;
     //response.writeHead(200, {"Content-Type": "text/plain"});
-    response.writeHead(200);
+    //response.writeHead(200);
     
 
         var pid = process.pid;
