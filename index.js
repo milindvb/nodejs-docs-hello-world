@@ -7,13 +7,13 @@ var path = require('path');
 
 var server = http.createServer(function(request, response) {
     //response.setHeader('Connection', 'Transfer-Encoding');
-    response.setHeader('Content-Type', 'text/html; charset=utf-8');
+    //response.setHeader('Content-Type', 'text/html; charset=utf-8');
     //response.setHeader('Content-Disposition', 'attachment; filename="sample23kb.txt"');
     //response.setHeader('Transfer-Encoding', 'chunked');
     //response.useChunkedEncodingByDefault = true;
     //response.writeHead(200, {"Content-Type": "text/plain"});
     //response.writeHead(200);
-    
+    response.writeHead(200, {"Content-Type": "text/plain"});
 
         var pid = process.pid;
         //const argv = require('yargs').argv
