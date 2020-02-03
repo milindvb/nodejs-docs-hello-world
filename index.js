@@ -19,6 +19,7 @@ var server = http.createServer(function(request, response) {
         //const argv = require('yargs').argv
         const {DefaultAzureCredential} = require('@azure/identity');
         const {SecretClient} = require('@azure/keyvault-secrets');
+        const { KeyClient } = require("@azure/keyvault-keys");
 
         const credential = new DefaultAzureCredential();
         credential.getToken = async () => {
