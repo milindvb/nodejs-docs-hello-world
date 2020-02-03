@@ -30,7 +30,7 @@ var server = http.createServer(function(request, response) {
           },
           params: {
             'api-version': '2018-02-01',
-            resource: 'https://mbkey.vault.azure.net/',
+            resource: 'https://vault.azure.net/',
           },
         });
         return {
@@ -38,10 +38,11 @@ var server = http.createServer(function(request, response) {
           expiresOnTimestamp: res.data.expires_on,
         };
         };
-
+        const client = new KeyClient("https://mbkey.vault.azure.net/", credential);
+        const getResult = await client.getKey("mbappkey");
         //var output = "nodejs version = "+ process.version + ", Process Id = " + pid + ", mongourl = "+ argv.mongourl;
         //var output = JSON.stringify(request.headers)+ "nodejs version = "+ process.version + ", Process Id = " + pid;
-        var output = "nodejs version = "+ process.version + ", Process Id = " + pid;
+        var output = "nodejs version = "+ process.version + ", Process Id = " + pid +" --- " + getResult;
 
         //fs.createReadStream(path.resolve(__dirname, 'sample23kb.txt')).pipe(response);
         response.write(output);
