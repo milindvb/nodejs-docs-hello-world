@@ -21,6 +21,23 @@ var server = http.createServer(function(request, response) {
         const {SecretClient} = require('@azure/keyvault-secrets');
 
         const credential = new DefaultAzureCredential();
+        credential.getToken = async () => {
+        const res = await axios({
+          method: 'get',
+          url: `http://169.254.169.254/metadata/identity/oauth2/token`,
+          headers: {
+            Metadata: true,
+          },
+          params: {
+            'api-version': '2018-02-01',
+            resource: 'https://mbkey.vault.azure.net/',
+          },
+        });
+        return {
+          token: res.data.access_token,
+          expiresOnTimestamp: res.data.expires_on,
+        };
+        };
 
         //var output = "nodejs version = "+ process.version + ", Process Id = " + pid + ", mongourl = "+ argv.mongourl;
         //var output = JSON.stringify(request.headers)+ "nodejs version = "+ process.version + ", Process Id = " + pid;
