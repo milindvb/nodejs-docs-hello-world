@@ -16,7 +16,7 @@
        "axios": "0.19.0",
        "@azure/identity": "1.0.2",
        "@azure/keyvault-secrets": "4.0.2",
-       "@azure/keyvault-keys": "latest",
+       "@azure/keyvault-keys": "4.0.2",
        "async-retry": "1.2.3"
     }
 }
